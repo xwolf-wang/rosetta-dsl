@@ -40,13 +40,13 @@ See the Apache License Version 2.0 for the specific language governing permissio
 	</properties>
 	<modules>
 		<module>com.regnosys.rosetta</module>
-		<module>com.regnosys.rosetta.target</module>
+		<!--<module>com.regnosys.rosetta.target</module>
 		<module>com.regnosys.rosetta.tests</module>
 		<module>com.regnosys.rosetta.ui</module>
 		<module>com.regnosys.rosetta.ide</module>
 		<module>com.regnosys.rosetta.ui.tests</module>
 		<module>com.regnosys.rosetta.lib</module>
-		<module>com.regnosys.rosetta.blueprint-lib</module>
+		<module>com.regnosys.rosetta.blueprint-lib</module>-->
 	</modules>
 	<dependencyManagement>
 		<dependencies>
@@ -165,6 +165,24 @@ See the Apache License Version 2.0 for the specific language governing permissio
 						</extraRequirements>
 					</dependency-resolution>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>
+								${project.build.directory}/lib
+							</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 
